@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
-const UserSchema= Schema({
+const UserSchema= mongoose.Schema({
     name:{
         type:String,
         require: [true , 'is required']
@@ -86,7 +86,7 @@ UserSchema.pre('save', function (next) {
 
 
 UserSchema.pre('remove',function(next){
-    this.model('Order').remove({owner:this._id}), next
+    this.model('Order').remove({Owner:this._id}), next
 })
 
 
